@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="icon" type="png" href="image/favicon.png">
+<title>About Us | Sanjh Foundation</title>
+
+</head>
+<style>
+  /* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f4f7f9;
+color:#222;
+overflow-x:hidden;
+}
+
+/* ===== HEADER ===== */
+header{
+background:#0d6;
+padding:18px 0;
+position:relative;
+z-index:1000;
+}
+
+.nav-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:#688d;
+font-weight:700;
+font-size:22px;
+}
+
+/* Desktop Menu */
+nav ul{
+list-style:none;
+display:flex;
+gap:30px;
+}
+
+nav ul li a{
+color:#0d6723;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#00b4d8;
+}
+
+/* ===== HAMBURGER ===== */
+.menu-toggle{
+display:none;
+font-size:28px;
+color:#ffffff;
+cursor:pointer;
+}
+
+/* ===== MOBILE MENU PROFESSIONAL ===== */
+@media(max-width:768px){
+
+nav{
+position:fixed;
+top:0;
+right:-100%;
+width:75%;
+height:100vh;
+background:#0b1726;
+box-shadow:-5px 0 20px rgba(0,0,0,0.3);
+transition:0.4s ease;
+padding-top:80px;
+}
+
+nav.active{
+right:0;
+}
+
+nav ul{
+flex-direction:column;
+align-items:flex-start;
+padding-left:30px;
+gap:25px;
+}
+
+nav ul li{
+width:100%;
+}
+
+nav ul li a.active{
+color:#00b4d8;
+font-weight:600;
+}
+
+nav ul li a{
+color:#ffffff;
+font-size:18px;
+display:block;
+width:100%;
+padding:10px 0;
+border-bottom:1px solid rgba(255,255,255,0.1);
+text-decoration:none;
+}
+
+nav ul li a:hover{
+color:#00b4d8;
+padding-left:8px;
+transition:0.3s;
+}
+
+/* Hamburger lines */
+.menu-toggle{
+width:30px;
+height:22px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+cursor:pointer;
+z-index:1001;
+}
+
+.menu-toggle span{
+height:3px;
+background:green;
+border-radius:2px;
+transition:0.3s;
+}
+
+/* Animate to X */
+.menu-toggle.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+
+.menu-toggle.active span:nth-child(2){
+opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* Mobile nav */
+@media(max-width:768px){
+
+nav{
+position:fixed;
+top:0;
+right:-100%;
+width:75%;
+height:100vh;
+background:#0b1726;
+transition:0.4s;
+padding-top:80px;
+z-index:1000;
+}
+
+nav.active{
+right:0;
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:none;
+z-index:999;
+}
+
+.overlay.active{
+display:block;
+}
+}
+
+/* Overlay background */
+body.menu-open::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+z-index:999;
+}
+}
+
+.donate-btn {
+  background: #00c896;
+  padding: 8px 18px;
+  border-radius: 25px;
+  color: #fff !important;
+}
+
+/* ===== HAMBURGER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 991px) {
+  .nav {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    width: 270px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* LOADER */
+#loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.spinner{
+width:50px;
+height:50px;
+border:5px solid #eee;
+border-top:5px solid #0a6b4f;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* NAVBAR */
+header{
+position:fixed;
+width:100%;
+top:0;
+padding:15px 0;
+transition:0.4s;
+z-index:999;
+}
+
+header.scrolled{
+background:white;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:26px;
+font-weight:700;
+color:#0a6b4f;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#333;
+font-weight:500;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#0a6b4f;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:20px;
+animation:fadeUp 1.2s ease;
+}
+
+.hero p{
+max-width:750px;
+margin:auto;
+margin-bottom:30px;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+padding:14px 35px;
+background:#0a6b4f;
+color:white;
+border-radius:50px;
+text-decoration:none;
+transition:0.4s;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+background:#064d39;
+}
+
+/* CARDS GLASS EFFECT */
+.card{
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+}
+
+/* SECTION */
+section{
+padding:100px 0;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.section-title h2{
+font-size:35px;
+color:#0a6b4f;
+}
+
+/* PROGRESS */
+.progress-bar{
+height:10px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+background:#0a6b4f;
+width:0;
+transition:2s ease;
+}
+
+/* COUNTER */
+.counter{
+font-size:45px;
+font-weight:700;
+color:#0a6b4f;
+}
+
+/* SCROLL TOP */
+#scrollTop{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#0a6b4f;
+color:white;
+padding:12px 18px;
+border-radius:50%;
+cursor:pointer;
+display:none;
+}
+
+.project-img{
+width:100%;
+height:40%;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:0px;
+}
+
+/* FOOTER */
+footer{
+background:#0a6b4f;
+color:white;
+padding:60px 0;
+text-align: center;
+}
+
+footer a{
+color:lightblue;
+text-decoration:none;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+0%{opacity:0; transform:translateY(40px);}
+100%{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+.nav-links{display:none;}
+}
+
+.location-section{
+padding:80px 0;
+background:#ffffffff;
+}
+
+.location-container{
+display:flex;
+gap:40px;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+.location-info{
+flex:1;
+min-width:280px;
+}
+
+.location-info h2{
+margin-bottom:20px;
+font-size:28px;
+color:#0d1b2a;
+}
+
+.location-info p{
+margin-bottom:8px;
+font-size:16px;
+}
+
+.location-map{
+flex:1;
+min-width:280px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+.location-container{
+flex-direction:column;
+}
+
+
+
+</style>
+<body>
+
+<header>
+<div class="container nav-container">
+
+<h2 class="logo">Sanjh Foundation</h2>
+
+<div class="menu-toggle" id="menu-toggle">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<nav id="nav-menu">
+<ul>
+<li><a href="index.html" <a href="index.html" >Home</a></li>
+<li><a href="a.html" class="active">About</a></li>
+<li><a href="p.html">Projects</a></li>
+<li><a href="d.html">Donate</a></li>
+<li><a href="c.html">Contact</a></li>
+</ul>
+</nav>
+
+</div>
+</header>
+
+<section class="hero" style="height:70vh;">
+<div class="container hero-content">
+<h1>About Sanjh Foundation</h1>
+<p>Committed to sustainable development, global accountability, and lasting humanitarian impact.</p>
+</div>
+</section>
+
+<!-- FOUNDATION STORY -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Our Story</h2>
+</div>
+
+<p>
+Sanjh Foundation was established with a powerful belief: sustainable change begins with community empowerment. From its inception, the foundation has focused on long-term development solutions rather than short-term relief. What started as a grassroots effort to support underserved communities has evolved into a professionally structured humanitarian organization operating with international standards.
+</p>
+
+<p>
+The name “Sanjh” represents unity, togetherness, and shared responsibility. We believe meaningful change requires collaboration between donors, volunteers, communities, and institutions. Over the years, we have expanded our reach through strategic planning, ethical governance, and transparent operational systems.
+</p>
+
+<p>
+Our journey reflects resilience, innovation, and commitment. Every milestone represents thousands of lives impacted, communities strengthened, and opportunities created.
+</p>
+
+</div>
+</section>
+
+<!-- VISION MISSION -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Vision & Mission</h2>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>Our Vision</h3>
+<p>
+To create a world where education, healthcare, economic opportunity, and dignity are accessible to every individual — regardless of socio-economic or geographic barriers.
+</p>
+</div>
+
+<div class="card">
+<h3>Our Mission</h3>
+<p>
+To implement evidence-based, sustainable programs that empower communities, reduce poverty, promote equality, and strengthen social resilience through ethical leadership and measurable impact.
+</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CORE VALUES -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Our Core Values</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Integrity</h3>
+<p>We operate with honesty, transparency, and ethical accountability in every action.</p>
+</div>
+
+<div class="card">
+<h3>Transparency</h3>
+<p>All financial and operational activities are documented, monitored, and reported.</p>
+</div>
+
+<div class="card">
+<h3>Sustainability</h3>
+<p>We prioritize long-term impact and community capacity building.</p>
+</div>
+
+<div class="card">
+<h3>Inclusivity</h3>
+<p>We serve without discrimination and promote equal opportunity.</p>
+</div>
+
+<div class="card">
+<h3>Innovation</h3>
+<p>We adapt modern solutions and data-driven strategies for better outcomes.</p>
+</div>
+
+<div class="card">
+<h3>Compassion</h3>
+<p>Human dignity and empathy guide our work.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- GOVERNANCE -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Governance & Leadership</h2>
+</div>
+
+<p>
+Sanjh Foundation is governed by a Board of Directors responsible for strategic direction, financial oversight, and compliance. The board ensures all programs align with our mission and international standards.
+</p>
+
+<p>
+Our Executive Leadership Team manages day-to-day operations, program implementation, partnerships, and monitoring systems.
+</p>
+
+<p>
+An independent advisory council provides expertise in education, healthcare, finance, and humanitarian development to strengthen strategic decisions.
+</p>
+
+</div>
+</section>
+
+<!-- ACCOUNTABILITY -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Financial Accountability & Transparency</h2>
+</div>
+
+<p>
+We maintain rigorous financial management systems including internal audits, external reviews, donor reporting frameworks, and impact measurement protocols. Over 90% of funds are allocated directly to program activities.
+</p>
+
+<p>
+Annual reports, financial statements, and impact summaries are publicly available to ensure stakeholder confidence.
+</p>
+
+</div>
+</section>
+
+<!-- MONITORING & EVALUATION -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Monitoring & Evaluation</h2>
+</div>
+
+<p>
+Each project undergoes structured planning, baseline assessment, implementation tracking, mid-term review, and final impact evaluation. Data collection tools and beneficiary feedback systems ensure continuous improvement.
+</p>
+
+</div>
+</section>
+
+<!-- SAFEGUARDING -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Safeguarding & Ethical Standards</h2>
+</div>
+
+<p>
+We enforce strict safeguarding policies to protect children, vulnerable individuals, staff, and volunteers. Anti-corruption measures and ethical guidelines are mandatory for all partners.
+</p>
+
+</div>
+</section>
+
+<!-- FUTURE ROADMAP -->
+<section>
+<div class="container">
+<div class="section-title">
+<h2>Strategic Roadmap 2030</h2>
+</div>
+
+<p>
+Our future strategy focuses on scaling education access, expanding healthcare outreach, strengthening women entrepreneurship, enhancing digital inclusion, and developing climate-resilient communities.
+</p>
+
+<p>
+Through strategic partnerships and sustainable financing models, we aim to double our beneficiary reach within the next five years.
+</p>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section>
+<div class="container" style="text-align:center;">
+<h2>Be Part of the Movement</h2>
+<br>
+<p>Join Sanjh Foundation in building a sustainable and equitable future.</p>
+<br>
+<a href="donate.html" class="btn">Support Our Mission</a>
+</div>
+</section>
+
+<footer>
+<div class="container footer-grid">
+<div>
+<h3>Sanjh Foundation</h3>
+
+<p>Empowering communities through sustainable development.</p>
+</div>
+<br>
+<div>
+<h3>Quick Links</h3>
+<a href="index.html">Home</a><br>
+<a href="p.html">Projects</a><br>
+<a href="d.html">Donate</a><br>
+<a href="c.html">Contact</a>
+</div>
+<br>
+<div>
+<h3>Contact</h3>
+<p>Email: Org.sanjhfoundation@gmail.com</p>
+<p>Phone: +92 329 2891698</p>
+</div>
+<br>
+        <p>© 2026 Sanjh Foundation | All Rights Reserved</p>
+</div>
+</footer>
+
+</body>
+<div id="loader">
+<div class="spinner"></div>
+</div>
+
+<div id="scrollTop">↑</div>
+</html>
+<script>
+const menuToggle = document.getElementById("menu-toggle");
+const navMenu = document.getElementById("nav-menu");
+const overlay = document.getElementById("overlay");
+const navLinks = document.querySelectorAll("#nav-menu a");
+
+menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", () => {
+    closeMenu();
+});
+
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        closeMenu();
+    });
+});
+
+function closeMenu(){
+    menuToggle.classList.remove("active");
+    navMenu.classList.remove("active");
+    overlay.classList.remove("active");
+}
+</script>
+<script>
+  window.addEventListener("load",function(){
+document.getElementById("loader").style.display="none";
+});
+
+// NAVBAR SCROLL
+window.addEventListener("scroll",function(){
+const header=document.querySelector("header");
+header.classList.toggle("scrolled",window.scrollY>50);
+});
+
+// PROGRESS BAR
+const bars=document.querySelectorAll(".progress-fill");
+window.addEventListener("scroll",()=>{
+bars.forEach(bar=>{
+const position=bar.getBoundingClientRect().top;
+if(position < window.innerHeight){
+bar.style.width=bar.dataset.width;
+}
+});
+});
+
+// COUNTER ANIMATION
+const counters=document.querySelectorAll(".counter");
+counters.forEach(counter=>{
+let start=0;
+const end=parseInt(counter.dataset.target);
+const speed=200;
+const update=()=>{
+start+=Math.ceil(end/speed);
+if(start<end){
+counter.innerText=start;
+setTimeout(update,10);
+}else{
+counter.innerText=end;
+}
+};
+update();
+});
+
+// SCROLL TOP BUTTON
+const scrollBtn=document.getElementById("scrollTop");
+window.onscroll=function(){
+if(document.documentElement.scrollTop>300){
+scrollBtn.style.display="block";
+}else{
+scrollBtn.style.display="none";
+}
+};
+scrollBtn.onclick=function(){
+window.scrollTo({top:0,behavior:"smooth"});
+};
+</script>
